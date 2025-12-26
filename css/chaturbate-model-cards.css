@@ -1,10 +1,10 @@
 /* Base Styles */
-.chaturbate-models-container {
+.cam-models-container {
     min-height: 200px;
     position: relative;
 }
 
-.chaturbate-models {
+.cam-models {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 10px;
@@ -13,31 +13,31 @@
 
 /* Responsive Grid Adjustments */
 @media (min-width: 600px) and (orientation: landscape) {
-    .chaturbate-models {
+    .cam-models {
         grid-template-columns: repeat(3, 1fr);
     }
 }
 
 @media (min-width: 992px) {
-    .chaturbate-models {
+    .cam-models {
         grid-template-columns: repeat(6, 1fr);
     }
 }
 
 /* Mobile Adjustments */
 @media (max-width: 599px) {
-    .chaturbate-models {
+    .cam-models {
         grid-template-columns: repeat(2, 1fr);
         gap: 5px;
         margin: 0 -10px;
     }
-    .chaturbate-model-card img {
+    .cam-model-card img {
         aspect-ratio: 4 / 3;
     }
 }
 
 /* Model Card Styles */
-.chaturbate-model-card {
+.cam-model-card {
     background-color: #E3E3E3;
     border: 0px solid #fff;
     overflow: hidden;
@@ -49,18 +49,18 @@
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.chaturbate-model-card:hover {
+.cam-model-card:hover {
     transform: translateY(-3px);
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
 /* Model Image */
-.chaturbate-model-image {
+.cam-model-image {
     position: relative;
     overflow: hidden;
 }
 
-.chaturbate-model-image img {
+.cam-model-image img {
     width: 100%;
     height: auto;
     aspect-ratio: 4 / 3;
@@ -68,12 +68,12 @@
     transition: transform 0.3s ease;
 }
 
-.chaturbate-model-card:hover .chaturbate-model-image img {
+.cam-model-card:hover .cam-model-image img {
     transform: scale(1.03);
 }
 
 /* Model Info Area */
-.chaturbate-model-info {
+.cam-model-info {
     padding: 2px 4px;
     display: flex;
     flex-direction: column;
@@ -84,19 +84,19 @@
 }
 
 /* Divider Line */
-.chaturbate-divider {
+.cam-divider {
     border-top: 1px solid #ccc;
     margin: 5px 10px;
 }
 
 /* Model Name */
-.chaturbate-model-card a {
+.cam-model-card a {
     text-decoration: none;
     color: #0A5A9F;
     display: block;
 }
 
-.chaturbate-model-name {
+.cam-model-name {
     font-size: 1.1em;
     font-weight: bold;
     margin-top: 0;
@@ -107,7 +107,7 @@
 }
 
 /* Age, Gender, Country */
-.chaturbate-model-age-gender {
+.cam-model-age-gender {
     position: absolute;
     top: 0px;
     right: 5px;
@@ -116,24 +116,24 @@
     align-items: center;
 }
 
-.chaturbate-model-age,
-.chaturbate-model-gender,
-.chaturbate-model-country {
+.cam-model-age,
+.cam-model-gender,
+.cam-model-country {
     color: #575757;
     margin-left: 5px;
 }
 
-.chaturbate-model-age:first-child {
+.cam-model-age:first-child {
     margin-left: 0;
 }
 
-.chaturbate-model-country img {
+.cam-model-country img {
     width: 18px;
     height: 14px;
 }
 
 /* Stats Area (Time Online & Viewers) */
-.chaturbate-model-stats {
+.cam-model-stats {
     position: relative;
     display: flex;
     justify-content: space-between;
@@ -142,8 +142,8 @@
     background: #E3E3E3;
 }
 
-.chaturbate-model-time-online,
-.chaturbate-model-viewers {
+.cam-model-time-online,
+.cam-model-viewers {
     display: flex;
     align-items: center;
 }
@@ -153,21 +153,21 @@
 }
 
 /* Icons */
-.chaturbate-model-time-online .webcam-icon::before {
+.cam-model-time-online .webcam-icon::before {
     content: "\1F552";
 }
 
-.chaturbate-model-viewers .eye-icon::before {
+.cam-model-viewers .eye-icon::before {
     content: "\1F441";
 }
 
 /* Subject Room Styles */
-.chaturbate-model-subject {
+.cam-model-subject {
     display: none;
 }
 
-.chaturbate-model-card:hover .chaturbate-model-subject,
-.chaturbate-model-card:focus .chaturbate-model-subject {
+.cam-model-card:hover .cam-model-subject,
+.cam-model-card:focus .cam-model-subject {
     display: block;
     position: absolute;
     bottom: 5px;
@@ -195,13 +195,13 @@
 }
 
 /* Load More Button */
-.chaturbate-load-more-container {
+.cam-load-more-container {
     text-align: center;
     margin-top: 20px;
     margin-bottom: 20px;
 }
 
-.chaturbate-load-more {
+.cam-load-more {
     background-color: #0A5A9F;
     color: white;
     border: none;
@@ -212,17 +212,17 @@
     transition: background-color 0.2s ease;
 }
 
-.chaturbate-load-more:hover {
+.cam-load-more:hover {
     background-color: #084b87;
 }
 
-.chaturbate-load-more.disabled {
+.cam-load-more.disabled {
     background-color: #cccccc;
     cursor: not-allowed;
 }
 
 /* No Models Message */
-.chaturbate-no-models {
+.cam-no-models {
     text-align: center;
     padding: 20px;
     font-size: 1.1em;
@@ -230,7 +230,7 @@
 }
 
 /* Loading Indicator */
-.chaturbate-loading {
+.cam-loading {
     text-align: center;
     padding: 20px;
 }
