@@ -1,7 +1,7 @@
 // Modern JavaScript – v3.4.1-full  (solo cambia util addNoCacheParam)
 document.addEventListener('DOMContentLoaded', () => {
 
-    const containers   = document.querySelectorAll('.chaturbate-models-container');
+    const containers   = document.querySelectorAll('.cam-models-container');
     const loadedModels = new Map();   // <id, Set>
     const states       = new Map();   // <id, {button, loading, hasMore, infiniteScroll}>
     let   io           = null;        // IntersectionObserver único
@@ -46,12 +46,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // modelos precargados
         loadedModels.set(id, new Set(
-            [...cont.querySelectorAll('.chaturbate-model-card')].map(c => c.dataset.username)
+            [...cont.querySelectorAll('.cam-model-card')].map(c => c.dataset.username)
         ));
         console.log(`Modelos iniciales en ${id}:`, loadedModels.get(id).size);
 
         // botón
-        const btn = document.querySelector('#chaturbate-load-more');
+        const btn = document.querySelector('#cam-load-more');
         if (btn) {
             states.set(id, { button: btn, loading: false, hasMore: true, infiniteScroll: false });
             btn.addEventListener('click', e => {
@@ -74,7 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const cont = document.getElementById(id);
         if (!cont) return;
 
-        const current = [...cont.querySelectorAll('.chaturbate-model-card')]
+        const current = [...cont.querySelectorAll('.cam-model-card')]
             .map(c => c.dataset.username);
         if (current.length === 0) return;
 
@@ -111,7 +111,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function applyUpdates(cont, data) {
         const id   = cont.id;
-        const list = cont.querySelector('.chaturbate-models');
+        const list = cont.querySelector('.cam-models');
         const set  = loadedModels.get(id);
         if (!list) return;
 
@@ -185,12 +185,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function appendBatch(cont, data) {
         const id  = cont.id;
-        let list  = cont.querySelector('.chaturbate-models');
+        let list  = cont.querySelector('.cam-models');
         const set = loadedModels.get(id);
 
         if (!list) {
             list = document.createElement('div');
-            list.className = 'chaturbate-models';
+            list.className = 'cam-models';
             cont.appendChild(list);
         }
 
@@ -231,7 +231,7 @@ document.addEventListener('DOMContentLoaded', () => {
         io = new IntersectionObserver(entries => {
             entries.forEach(e => {
                 if (e.isIntersecting) {
-                    const c  = e.target.closest('.chaturbate-models-container');
+                    const c  = e.target.closest('.cam-models-container');
                     const st = states.get(c.id);
                     if (st && st.infiniteScroll && !st.loading && st.hasMore) {
                         loadMore(c.id);
@@ -244,8 +244,8 @@ document.addEventListener('DOMContentLoaded', () => {
     function observePenultimate(cont) {
         if (!io) return;
         io.takeRecords();
-        [...cont.querySelectorAll('.chaturbate-model-card')].forEach(el => io.unobserve(el));
-        const cards = cont.querySelectorAll('.chaturbate-model-card');
+        [...cont.querySelectorAll('.cam-model-card')].forEach(el => io.unobserve(el));
+        const cards = cont.querySelectorAll('.cam-model-card');
         if (cards.length >= 2) io.observe(cards[cards.length - 2]);
     }
 });

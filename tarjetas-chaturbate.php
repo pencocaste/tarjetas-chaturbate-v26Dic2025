@@ -189,30 +189,30 @@ function chaturbate_generate_model_card($m, $wl = '', $track = 'default') {
     $flag  = $cc ? '<img src="https://flagcdn.com/24x18/'.$cc.'.png" alt="'.$cc.'">' : '';
 
     ob_start(); ?>
-    <div class="chaturbate-model-card" data-username="<?php echo esc_attr($user); ?>">
+    <div class="cam-model-card" data-username="<?php echo esc_attr($user); ?>">
         <a href="<?php echo esc_url($url); ?>" target="_blank" rel="noopener nofollow">
-            <div class="chaturbate-model-image">
+            <div class="cam-model-image">
                 <img decoding="async" src="<?php echo esc_url($img); ?>"
                      alt="<?php echo esc_attr("$user live cam"); ?>"
                      loading="lazy" width="360" height="270">
             </div>
-            <div class="chaturbate-model-info">
-                <div class="chaturbate-model-name"><strong><?php echo esc_html($user); ?></strong></div>
-                <div class="chaturbate-model-age-gender">
-                    <?php if ($age)  echo '<span class="chaturbate-model-age">'.esc_html($age).'</span>'; ?>
-                    <?php if ($gSym) echo '<span class="chaturbate-model-gender">'.esc_html($gSym).'</span>'; ?>
-                    <?php if ($flag) echo '<span class="chaturbate-model-country">'.$flag.'</span>'; ?>
+            <div class="cam-model-info">
+                <div class="cam-model-name"><strong><?php echo esc_html($user); ?></strong></div>
+                <div class="cam-model-age-gender">
+                    <?php if ($age)  echo '<span class="cam-model-age">'.esc_html($age).'</span>'; ?>
+                    <?php if ($gSym) echo '<span class="cam-model-gender">'.esc_html($gSym).'</span>'; ?>
+                    <?php if ($flag) echo '<span class="cam-model-country">'.$flag.'</span>'; ?>
                 </div>
-                <div class="chaturbate-divider"></div>
-                <div class="chaturbate-model-subject" title="<?php echo esc_attr($subj); ?>">
+                <div class="cam-divider"></div>
+                <div class="cam-model-subject" title="<?php echo esc_attr($subj); ?>">
                     <?php echo esc_html($subj); ?>
                 </div>
-                <div class="chaturbate-model-stats">
-                    <span class="chaturbate-model-time-online">
+                <div class="cam-model-stats">
+                    <span class="cam-model-time-online">
                         <span class="emoticon webcam-icon"></span>
                         <?php echo esc_html("$hrs hrs"); ?>
                     </span>
-                    <span class="chaturbate-model-viewers">
+                    <span class="cam-model-viewers">
                         <span class="emoticon eye-icon"></span>
                         <?php echo esc_html($view); ?>
                     </span>
@@ -233,12 +233,12 @@ function chaturbate_render_models_html($atts) {
     $wl  = esc_url($atts['whitelabel']);
     $trk = sanitize_text_field($atts['track']);
 
-    $id  = 'chaturbate-models-' . md5($g . $l . $tag . $reg . $wl . $trk);
+    $id  = 'cam-models-' . md5($g . $l . $tag . $reg . $wl . $trk);
     $res = fetch_chaturbate_models($g, $l, 0, $tag, $reg, true);
     $mods= $res['results'] ?? array();
 
     ob_start(); ?>
-    <div id="<?php echo esc_attr($id); ?>" class="chaturbate-models-container"
+    <div id="<?php echo esc_attr($id); ?>" class="cam-models-container"
          data-gender="<?php echo esc_attr($g); ?>"
          data-limit="<?php echo esc_attr($l); ?>"
          data-offset="<?php echo esc_attr($l); ?>"
@@ -247,18 +247,18 @@ function chaturbate_render_models_html($atts) {
          data-whitelabel="<?php echo esc_attr($wl); ?>"
          data-track="<?php echo esc_attr($trk); ?>">
         <?php if ($mods) : ?>
-            <div class="chaturbate-models">
+            <div class="cam-models">
                 <?php foreach ($mods as $m) {
                     echo chaturbate_generate_model_card($m, $wl, $trk);
                 } ?>
             </div>
         <?php else : ?>
-            <p class="chaturbate-no-models">No models available.</p>
+            <p class="cam-no-models">No models available.</p>
         <?php endif; ?>
     </div>
-    <div class="chaturbate-load-more-container">
-        <button id="chaturbate-load-more"
-                class="chaturbate-load-more-button"
+    <div class="cam-load-more-container">
+        <button id="cam-load-more"
+                class="cam-load-more-button"
                 data-container="<?php echo esc_attr($id); ?>">
             More webcams
         </button>
